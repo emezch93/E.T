@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering TechMates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Form Styles */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .signup-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .signup-form h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #0056b3;
+        }
+
+        .signup-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .signup-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .signup-form button:hover {
+            background-color: #004085;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            display: none;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .main-content h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        .main-content p {
+            font-size: 22px;
+            color: #0056b3;
+        }
+
+        /* Topic Styles */
+        .content-section {
+            padding: 40px 20px;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .content-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .content-section li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+img{
+  display: block;
+  margin-bottom: 0px;
+  
+}
+    </style>
+    <script>
+        // Check if the user has signed up before
+        window.onload = function () {
+            if (localStorage.getItem("signedUp") === "true") {
+                // If the user has signed up, hide the form and show the content
+                document.getElementById("form-container").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            } else {
+                // If not, show the sign-up form
+                document.getElementById("form-container").style.display = "flex";
+                document.getElementById("main-content").style.display = "none";
+            }
+        };
+
+        // Simple client-side validation for the form
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var passion = document.getElementById("passion").value;
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+            if (name == "" || email == "" || passion == "") {
+                alert("All fields must be filled out.");
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Store the user's sign-up status in localStorage
+            localStorage.setItem("signedUp", "true");
+
+            // Show the website after form submission
+            showWebsite();
+            return false; // Prevent form submission
+        }
+
+        // Function to show the main content after sign-up
+        function showWebsite() {
+            // Hide the sign-up form
+            document.getElementById("form-container").style.display = "none";
+            // Show the main content of the website
+            document.getElementById("main-content").style.display = "block";
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Sign-Up Form -->
+    <div class="form-container" id="form-container">
+        <div class="signup-form">
+            <h2>Sign Up to Engineering TechMates</h2>
+            <form onsubmit="return validateForm()">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <input type="text" id="passion" placeholder="What are you passionate about in engineering?" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content: Engineering Topics -->
+    <div class="main-content" id="main-content">
+        <header>
+            <h1>Engineering TechMates: Uniting Passionate Minds in the World of Engineering</h1>
+            
+        </header>
+
+        <!-- Content Section: Topics -->
+        <div class="content-section">
+            <h2>Popular Engineering Topics to Discuss:</h2>
+            <ul>
+                <!-- Mechatronics Engineering Topics -->
+                <li><strong>1. Mechatronics and Robotics:</strong> The integration of mechanical, electrical, and computer engineering to develop intelligent systems, robots, and automation technologies.</li>
+                <li><strong>2. Control Systems in Robotics:</strong> Analyzing feedback loops, sensors, and actuators used to control robotic systems.</li>
+                <li><strong>3. Sensors and Actuators in Mechatronics:</strong> Understanding the role of sensors (like proximity, temperature) and actuators (like motors, servos) in automation systems.</li>
+                <li><strong>4. Artificial Intelligence in Robotics:</strong> Implementing AI for decision-making in autonomous robots.</li>
+
+                <!-- Civil Engineering Topics -->
+                <li><strong>5. Structural Design and Materials:</strong> Exploring the properties and behavior of materials like steel and concrete in building structures.</li>
+                <li><strong>6. Sustainable Infrastructure Design:</strong> Techniques and technologies used to create eco-friendly and sustainable civil engineering projects.</li>
+                <li><strong>7. Geotechnical Engineering:</strong> Analyzing soil properties and their impact on construction, foundations, and stability.</li>
+                <li><strong>8. Transportation Engineering:</strong> Improving and designing roadways, bridges, and transportation systems for efficiency and safety.</li>
+
+                <!-- Chemical Engineering Topics -->
+                <li><strong>9. Process Engineering and Optimization:</strong> Designing and optimizing chemical processes for manufacturing, such as in pharmaceuticals, food production, and energy sectors.</li>
+                <li><strong>10. Green Chemistry and Sustainability:</strong> Developing cleaner, more sustainable chemical processes to minimize environmental impact.</li>
+                <li><strong>11. Reaction Engineering:</strong> Understanding the kinetics of chemical reactions and how to control them in industrial processes.</li>
+
+                <!-- Software Engineering Topics -->
+                <li><strong>12. Software Development Life Cycle:</strong> Exploring the stages of software development from planning and design to coding and testing.</li>
+                <li><strong>13. Web Development and Technologies:</strong> Delving into the world of front-end and back-end web development, frameworks, and the latest trends in web technologies.</li>
+                <li><strong>14. Machine Learning and Artificial Intelligence in Software Engineering:</strong> How AI is shaping software development processes and applications.</li>
+                <li><strong>15. Software Testing and Quality Assurance:</strong> Exploring techniques for testing and ensuring software quality, including unit testing, integration testing, and automated testing tools.</li>
+
+                <!-- Electrical Engineering Topics -->
+                <li><strong>16. Electrical Circuits and Signal Processing:</strong> Understanding circuit analysis, AC/DC circuits, and the basics of signal processing.</li>
+                <li><strong>17. Power Systems and Renewable Energy:</strong> The design, operation, and maintenance of power systems, with a focus on renewable energy sources.</li>
+                <li><strong>18. Electrical Machines and Transformers:</strong> Study of electromechanical energy conversion devices, including motors, generators, and transformers.</li>
+
+                <!-- Aerospace Engineering Topics -->
+                <li><strong>19. Aerodynamics and Aircraft Design:</strong> The science of air movement around vehicles, aircraft design principles, and materials used in aviation.</li>
+                <li><strong>20. Space Exploration and Satellite Engineering:</strong> Discussing the design, launch, and operation of satellites and space exploration technologies.</li>
+
+                <!-- Environmental Engineering Topics -->
+                <li><strong>21. Wastewater Treatment and Water Purification:</strong> Techniques in purifying water, managing wastewater, and reducing pollution.</li>
+                <li><strong>22. Air Pollution Control Technologies:</strong> Developing systems and solutions to reduce air pollution from industrial and automotive sources.</li>
+                <li><strong>23. Sustainable Waste Management:</strong> Strategies for reducing, reusing, and recycling waste to minimize environmental impact.</li>
+            </ul>
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2025 Engineering TechMates. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
+
+
+
